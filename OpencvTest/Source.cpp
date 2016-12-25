@@ -8,6 +8,7 @@ using namespace std;
 
 //function declaration
 Mat drawHistrogram(Mat Grayimg);
+Mat HistrogramEqualisation(int a, int b, int c, int d, int l, Mat grayimage);
 
 int main(int argc, char** argv)
 {
@@ -43,20 +44,25 @@ int main(int argc, char** argv)
 	
 	//getting the histrogram as a image
 	Mat histro = drawHistrogram(Grayimg);
+
+	Mat equalized = HistrogramEqualisation(12,97,20,180,255,Grayimg);
 	
 	// display histogram 
 	namedWindow("Intensity Histogram", CV_WINDOW_AUTOSIZE);
 	imshow("Intensity Histogram", histro);
 
-
 	namedWindow("Color Image", WINDOW_AUTOSIZE); // Create a window for display.
-	imshow("Color Image", image); // Show our image inside it.
+	imshow("Color Image", image); // Show our Colorimage inside it.
 
 	namedWindow("Gray Image", WINDOW_AUTOSIZE); // Create a window for display.
-	imshow("Gray Image", Grayimg); // Show our image inside it.
+	imshow("Gray Image", Grayimg); // Show our grayimage inside it.s
 	
+	namedWindow("Equalized Image", WINDOW_AUTOSIZE); // Create a window for display.
+	imshow("Equalized Image", equalized); // Show our equalized image inside it.
 	
-	
+	namedWindow("Equalized histrogram", WINDOW_AUTOSIZE); // Create a window for display.
+	imshow("Equalized histrogram", drawHistrogram(equalized)); // Show our equalized histrogram inside it.
+
 	waitKey(0); // Wait for a keystroke in the window
 	return 0;
 }
@@ -85,9 +91,7 @@ Mat drawHistrogram(Mat Grayimg)
 
 		}
 	}
-
-
-
+		
 	//printing out the grayleve values
 	for (int x = 0; x< 256; x++)
 	{
@@ -122,4 +126,61 @@ Mat drawHistrogram(Mat Grayimg)
 	}
 
 	return histImage;
+}
+
+
+Mat HistrogramEqualisation(int a,int b,int c,int d,int l,Mat grayimage)
+ {
+	Mat equalizedimge		; 
+	equalizedimge = grayimage.clone();
+	int greylevel;
+	double alpha = (double)c / a;
+	double Beta = (double)(d-c) / (b-a);
+	double Gamma = (double)(l - d) / (l - b);
+		
+	//count the number of pixels for a 255 gray levels
+	int pixelscount[256];
+
+	//emptying the array
+	for (int a = 0; a < 256; a++)
+	{
+		pixelscount[a] = 0;
+	}
+
+	for (int x = 0;x<grayimage.rows;x++)
+	{
+		for (int y = 0;y<grayimage.cols;y++) {
+
+			greylevel = (int)grayimage.at<uchar>(x, y);
+			pixelscount[greylevel] += 1;
+
+		}
+	}
+		
+	//equalising the image
+
+	for (int x = 0;x<grayimage.rows;x++)
+	{
+		for (int y = 0;y<grayimage.cols;y++) {
+
+			greylevel = (int)grayimage.at<uchar>(x, y);
+						
+				if (0 < greylevel <= a) {
+
+					equalizedimge.at<uchar>(x, y) = alpha*greylevel;
+				}
+				else if (a <= greylevel<b)
+				{
+					equalizedimge.at<uchar>(x, y) = Beta*(greylevel - a) + c;
+				}
+				else if (b <= greylevel <l)
+				{
+					equalizedimge.at<uchar>(x, y) = Gamma*(greylevel - b) + d;
+				}
+		
+		}
+	}
+	
+
+	return equalizedimge;
 }

@@ -1,6 +1,12 @@
 ﻿  Source.cpp
-c:\users\rahal\documents\visual studio 2015\projects\opencvtest\opencvtest\source.cpp(42): warning C4101: 'y': unreferenced local variable
-c:\users\rahal\documents\visual studio 2015\projects\opencvtest\opencvtest\source.cpp(41): warning C4101: 'i': unreferenced local variable
-c:\users\rahal\documents\visual studio 2015\projects\opencvtest\opencvtest\source.cpp(113): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\rahal\documents\visual studio 2015\projects\opencvtest\opencvtest\source.cpp(43): warning C4101: 'y': unreferenced local variable
+c:\users\rahal\documents\visual studio 2015\projects\opencvtest\opencvtest\source.cpp(42): warning C4101: 'i': unreferenced local variable
+c:\users\rahal\documents\visual studio 2015\projects\opencvtest\opencvtest\source.cpp(119): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\rahal\documents\visual studio 2015\projects\opencvtest\opencvtest\source.cpp(176): warning C4804: '<=': unsafe use of type 'bool' in operation
+c:\users\rahal\documents\visual studio 2015\projects\opencvtest\opencvtest\source.cpp(178): warning C4244: '=': conversion from 'double' to 'uchar', possible loss of data
+c:\users\rahal\documents\visual studio 2015\projects\opencvtest\opencvtest\source.cpp(180): warning C4804: '<': unsafe use of type 'bool' in operation
+c:\users\rahal\documents\visual studio 2015\projects\opencvtest\opencvtest\source.cpp(182): warning C4244: '=': conversion from 'double' to 'uchar', possible loss of data
+c:\users\rahal\documents\visual studio 2015\projects\opencvtest\opencvtest\source.cpp(184): warning C4804: '<': unsafe use of type 'bool' in operation
+c:\users\rahal\documents\visual studio 2015\projects\opencvtest\opencvtest\source.cpp(186): warning C4244: '=': conversion from 'double' to 'uchar', possible loss of data
   OpencvTest.vcxproj -> C:\Users\Rahal\documents\visual studio 2015\Projects\OpencvTest\x64\Debug\OpencvTest.exe
   OpencvTest.vcxproj -> C:\Users\Rahal\documents\visual studio 2015\Projects\OpencvTest\x64\Debug\OpencvTest.pdb (Full PDB)
