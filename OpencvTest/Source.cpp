@@ -6,6 +6,9 @@
 using namespace cv;
 using namespace std;
 
+//function declaration
+Mat drawHistrogram(Mat Grayimg);
+
 int main(int argc, char** argv)
 {
 	if (argc != 2)
@@ -37,33 +40,58 @@ int main(int argc, char** argv)
 
 	int i;
 	int y;
+	
+	//getting the histrogram as a image
+	Mat histro = drawHistrogram(Grayimg);
+	
+	// display histogram 
+	namedWindow("Intensity Histogram", CV_WINDOW_AUTOSIZE);
+	imshow("Intensity Histogram", histro);
+
+
+	namedWindow("Color Image", WINDOW_AUTOSIZE); // Create a window for display.
+	imshow("Color Image", image); // Show our image inside it.
+
+	namedWindow("Gray Image", WINDOW_AUTOSIZE); // Create a window for display.
+	imshow("Gray Image", Grayimg); // Show our image inside it.
+	
+	
+	
+	waitKey(0); // Wait for a keystroke in the window
+	return 0;
+}
+
+Mat drawHistrogram(Mat Grayimg)
+{
+	int rows = Grayimg.rows;
+	int coloumns = Grayimg.cols;
 	int greylevel;
 
 	//count the number of pixels for a 255 gray levels
 	int pixelscount[256];
 
 	//emptying the array
-		for (int a = 0; a < 256; a++)
+	for (int a = 0; a < 256; a++)
 	{
 		pixelscount[a] = 0;
 	}
 
-	for (int x=0;x<rows;x++)
+	for (int x = 0;x<rows;x++)
 	{
-		for (y=0;y<coloumns;y++) {
+		for (int y = 0;y<coloumns;y++) {
 
 			greylevel = (int)Grayimg.at<uchar>(x, y);
 			pixelscount[greylevel] += 1;
-	
+
 		}
 	}
 
-	
-	
+
+
 	//printing out the grayleve values
 	for (int x = 0; x< 256; x++)
 	{
-		cout << x << ": "  << pixelscount[x] << std::endl;
+		cout << x << ": " << pixelscount[x] << std::endl;
 	}
 
 	// definig histrogram width and height
@@ -81,31 +109,17 @@ int main(int argc, char** argv)
 	}
 
 	//normalize the histogram between 0 and histImage.rows(400)  
-	for(int i = 0; i < 255; i++){   
-		pixelscount[i] = ((double)pixelscount[i]/max)*histImage.rows;   
+	for (int i = 0; i < 255; i++) {
+		pixelscount[i] = ((double)pixelscount[i] / max)*histImage.rows;
 	}
 
 	// draw the intensity line for histogram  
-	for(int i = 0; i < 255; i++)     { 
+	for (int i = 0; i < 255; i++) {
 
-		line(histImage, Point(bin_w*(i), hist_h),         
-			Point(bin_w*(i), hist_h - pixelscount[i]),     
-			Scalar(0,0,0), 1, 8, 0);   
-	} 
+		line(histImage, Point(bin_w*(i), hist_h),
+			Point(bin_w*(i), hist_h - pixelscount[i]),
+			Scalar(0, 0, 0), 1, 8, 0);
+	}
 
-	// display histogram 
-	namedWindow("Intensity Histogram", CV_WINDOW_AUTOSIZE);
-	imshow("Intensity Histogram", histImage);
-
-
-	namedWindow("Color Image", WINDOW_AUTOSIZE); // Create a window for display.
-	imshow("Color Image", image); // Show our image inside it.
-
-	namedWindow("Gray Image", WINDOW_AUTOSIZE); // Create a window for display.
-	imshow("Gray Image", Grayimg); // Show our image inside it.
-	
-	
-	
-	waitKey(0); // Wait for a keystroke in the window
-	return 0;
+	return histImage;
 }

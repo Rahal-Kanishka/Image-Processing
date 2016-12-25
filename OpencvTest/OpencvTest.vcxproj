@@ -104,6 +104,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>E:\Softwares\OpenCV3.1\opencv\build\include</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

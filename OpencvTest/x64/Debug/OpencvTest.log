@@ -1,5 +1,6 @@
 ﻿  Source.cpp
-c:\users\rahal\documents\visual studio 2015\projects\opencvtest\opencvtest\source.cpp(85): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\rahal\documents\visual studio 2015\projects\opencvtest\opencvtest\source.cpp(38): warning C4101: 'i': unreferenced local variable
-  OpencvTest.vcxproj -> C:\Users\Rahal\Documents\Visual Studio 2015\Projects\OpencvTest\x64\Debug\OpencvTest.exe
-  OpencvTest.vcxproj -> C:\Users\Rahal\Documents\Visual Studio 2015\Projects\OpencvTest\x64\Debug\OpencvTest.pdb (Full PDB)
+c:\users\rahal\documents\visual studio 2015\projects\opencvtest\opencvtest\source.cpp(42): warning C4101: 'y': unreferenced local variable
+c:\users\rahal\documents\visual studio 2015\projects\opencvtest\opencvtest\source.cpp(41): warning C4101: 'i': unreferenced local variable
+c:\users\rahal\documents\visual studio 2015\projects\opencvtest\opencvtest\source.cpp(113): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  OpencvTest.vcxproj -> C:\Users\Rahal\documents\visual studio 2015\Projects\OpencvTest\x64\Debug\OpencvTest.exe
+  OpencvTest.vcxproj -> C:\Users\Rahal\documents\visual studio 2015\Projects\OpencvTest\x64\Debug\OpencvTest.pdb (Full PDB)
